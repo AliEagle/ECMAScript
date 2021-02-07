@@ -234,6 +234,8 @@ hello()
 
 //--------------------------------------------------------------------------------
 
+// es6 -- Generator
+
 function* helloWorld() {
     if (true) {
         yield 'Hola, '
@@ -242,6 +244,216 @@ function* helloWorld() {
         yield 'Mundo!!!'
     }
     if (true) {
-        yield ' Como estan?'
+        yield 'Como estan?'
     }
 }
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value)
+console.log(generatorHello.next().value)
+console.log(generatorHello.next().value)
+
+//----------------------------------------------------------------------------------
+
+// -------------------------------- es7 --------------------------------------------
+
+// es7 -- .includes()
+
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+
+if (numbers.includes(7)) {
+    console.log('Sí se encuentra el valor 7')
+} else {
+    console.log('No se encuentra')
+}
+
+// ----------------------------------------------------------------------------------
+
+// es7 -- Exponent 
+
+let base = 4
+let exponente = 4
+let resultado = base ** exponente
+console.log(resultado)
+
+// -------------------------------- es8 --------------------------------------------
+
+// es8 -- Object.entries()
+
+const data = {
+    fontend: 'ali',
+    backend: 'xeagle',
+    design: 'yoMerengues',
+}
+
+const entries = Object.entries(data)
+console.log(entries)
+// [ [ 'fontend', 'ali' ],
+//   [ 'backend', 'xeagle' ],
+//   [ 'design', 'yoMerengues' ] ]
+console.log(entries.length)
+// 3
+
+//-------------------------------------------------------------------------------------
+
+// es8 -- Object.values()
+const data = {
+    fontend: 'ali',
+    backend: 'xeagle',
+    design: 'yoMerengues',
+}
+
+const values = Object.values(data)
+console.log(values)
+// [ 'ali', 'xeagle', 'yoMerengues' ]
+console.log(values.length)
+// 3
+
+// --------------------------------------------------------------------------------------
+
+// es8 -- Padding
+
+const string = 'hello'
+console.log(string.padStart(9, ' hi'))
+// hi hello
+console.log(string.padEnd(12, ' -----'))
+// hello ----- 
+console.log('food'.padEnd(12, ' torta--'))
+// food torta--
+
+//------------------------------------------------------------------------------------------
+
+// es8 -- Async Await
+
+const helloWorld = () => {
+    return new Promise((resolve, reject) => {
+        (true) ? setTimeout(() => resolve('Hello World!!!'), 3000) : reject(new Error('Test Error'))
+    })
+}
+
+const hellowAsync = async () => {
+    const hello = await helloWorld()
+    console.log(hello)
+}
+
+hellowAsync()
+
+
+const anotherFunction = async () => {
+    try {
+        const hello = await helloWorld()
+        console.log(hello)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+anotherFunction()
+
+//------------------------------------------------------------------------------------------------
+
+//-----------------------------------------es9----------------------------------------------------
+
+// es9 -- Rest operator
+
+const obj = {
+    name: 'ali',
+    age: 30,
+    country: 'MXC'
+}
+
+let { country, ...all } = obj
+console.log(all)
+//{ name: 'ali', age: 30 }
+let { name, ...all } = obj
+console.log(name, all)
+//ali { age: 30, country: 'MXC' }
+
+// -----------------------------------------------------------------------------------------------
+
+// es9 -- spread Operator
+const obj = {
+    name: 'ali',
+    age: 30,
+}
+
+const obj1 = {
+    ...obj,
+    country: 'MXC',
+}
+
+console.log(obj1)
+//{ name: 'ali', age: 30, country: 'MXC' }
+//--------------------------------------------------------------------------------------------
+
+// es9 -- .finally
+
+const holaMundo = () => {
+    return new Promise((resolve, reject) => {
+        (true)
+            ? setTimeout(() => resolve('Hola Mundo'), 3000)
+            : reject(new Error('Error De Prueba'))
+    })
+}
+
+holaMundo()
+    .then(respuesta => console.log(respuesta))
+    .catch(error => console.log(error))
+    .finally(() => console.log('Finalizo'))
+//Hola Mundo
+//Finalizo
+
+//---------------------------------------------------------------------------------------------------
+
+// es9 -- Regular Expresions
+
+const regexpData = /([0-9]{4})-([0-9]{2})-([0-9]{2})/
+const match = regexpData.exec('2021-02-06')
+const year = match[1]
+const month = match[2]
+const day = match[3]
+console.log(year, month, day)
+
+//----------------------------------------------------------------------------------------------------
+//------------------------------------------es10------------------------------------------------------
+
+// es10 -- .flat() -- flatMap()
+
+let arreglo = [1, 2, 3, [10, 20, 30, [100, 200, 300]]];
+console.log(arreglo.flat())
+//[ 1, 2, 3, 10, 20, 30, [ 100, 200, 300 ] ]
+console.log(arreglo.flat(2))
+// [
+//     1,   2,   3,  10, 20,
+//     30, 100, 200, 300
+// ]    
+
+let arreglo2 = [1, 2, 3, 4, 5]
+console.log(arreglo2.flatMap(value => [value, value * 2]))
+// [
+//     1, 2, 2, 4,  3,
+//     6, 4, 8, 5, 10
+// ]
+
+let hello = '         hello world'
+console.log(hello)
+//         hello world
+console.log(hello.trimStart())
+//hello world
+
+let hello = 'hello world            '
+console.log(hello)
+//hello world            
+console.log(hello.trimEnd())
+//hello world
+
+//----------------------------------------------------------------------------------------------
+
+// es10 -- Object.fromEntries()
+
+let entries = [['nombre', 'ali'], ['age', 32]]
+console.log(Object.fromEntries(entries))
+
+
+
+//------------------------------------------------------------------------------------------------
